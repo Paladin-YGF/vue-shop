@@ -4,6 +4,7 @@
                  <mt-swipe :auto="1000" >
                     <mt-swipe-item v-for="item in list" :key="item.id">
                         <img :src="item.img">
+
                     </mt-swipe-item>
                  </mt-swipe>
             </div>

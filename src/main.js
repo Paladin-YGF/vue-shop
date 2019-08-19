@@ -24,7 +24,7 @@ Vue.component(SwipeItem.name, SwipeItem);
 let vm = new Vue({
     el: "#app",
     data:{
-        
+        msg: '123'
     },
     methods: {
 
