@@ -1,5 +1,5 @@
 <template>
-    <div style="padding-top: 2.5rem;">
+    <div style="padding-top: 2.5rem; padding-bottom: 3.5rem;">
             <!-- 顶部 -->
 			<mt-header fixed title="固定在顶部"></mt-header>
             <!-- 路由 -->
