@@ -1,21 +1,22 @@
 <template>
     <div>
-            <div style="overflow:hidden;">
-                 <mt-swipe :auto="1000" >
+          
+                 <!-- <mt-swipe :auto="1000" >
                     <mt-swipe-item v-for="item in list" :key="item.id">
                         <img :src="item.img">
 
                     </mt-swipe-item>
-                 </mt-swipe>
-            </div>
+                 </mt-swipe> -->
+                 <swiper :list="list" :isFull="true"></swiper>
+  
              <ul class="mui-table-view mui-grid-view mui-grid-9">
 		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link to="/home/newlist">
                             <img src="../../img/menu1.png" alt="">
                             <div class="mui-media-body">新闻资讯</div></router-link></li>
-		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link to="">
+		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link to="/home/photos">
 		                    <img src="../../img/menu2.png" alt="">
                             <div class="mui-media-body">图片分享</div></router-link></li>
-		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link to="">
+		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link to="/home/goodslist">
 		                    <img src="../../img/menu3.png" alt="">
                             <div class="mui-media-body">商品购买</div></router-link></li>
 		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link to="">
@@ -34,6 +35,7 @@
 <script>
 import { Toast } from 'mint-ui';
 import '../../lib/mui-master/dist/css/mui.min.css';
+import swiper from "../subcomponents/swiper.vue"
 export default {
     data() {
         return {
@@ -57,19 +59,22 @@ export default {
                 }
             })
         }
+    },
+    components: {
+        swiper
     }
 }
 </script>
 
 <style lang="css" scoped>
-    .mint-swipe {
+    /* .mint-swipe {
         height: 10rem;
         overflow: hidden;
     }
     .mint-swipe img {
         height: 100%;
         width: 100%;
-    }
+    } */
     .mui-grid-view.mui-grid-9 .mui-table-view-cell{
         border: none;
     }

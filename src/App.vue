@@ -10,19 +10,20 @@
 			</div>
             <!-- 底部 -->
             <nav class="mui-bar mui-bar-tab">
-			<router-link class="mui-tab-item" to="/home">
+				<!-- mui-tab-item 与mui.js冲突，导致底部无法切换路由-->
+			<router-link class="mui-tab-items" to="/home">
 				<span class="mui-icon mui-icon-home"></span>
 				<span class="mui-tab-label">首页</span>
 			</router-link>
-			<router-link class="mui-tab-item" to="/member">
+			<router-link class="mui-tab-items" to="/member">
 				<span class="mui-icon mui-icon-contact"></span>
 				<span class="mui-tab-label">会员</span>
 			</router-link>
-			<router-link class="mui-tab-item" to="/shopcar">
-				<span class="mui-icon mui-icon-extra mui-icon-extra-cart"><span class="mui-badge">0</span></span>
+			<router-link class="mui-tab-items" to="/shopcar">
+				<span class="mui-icon mui-icon-extra mui-icon-extra-cart"><span class="mui-badge" id="box" ref="boxx">0</span></span>
 				<span class="mui-tab-label">购物车</span>
 			</router-link>
-			<router-link class="mui-tab-item" to="/search">
+			<router-link class="mui-tab-items" to="/search">
 				<span class="mui-icon mui-icon-search"></span>
 				<span class="mui-tab-label">搜索</span>
 			</router-link>
@@ -41,6 +42,9 @@ export default {
 </script>
 
 <style lang="css"scoped>
+	.mint-header.is-fixed {
+		z-index: 999;
+	}
 	.container {
 		overflow-x: hidden;
 	}
@@ -57,4 +61,32 @@ export default {
 	.v-leave-active {
 		transition: all 0.5s ease;
 	}
+
+	.mui-bar-tab .mui-tab-items.mui-active {
+           color: #007aff;
+   }
+   .mui-bar-tab .mui-tab-items {
+            display: table-cell;
+            overflow: hidden;
+            width: 1%;
+            height: 50px;
+            text-align: center;
+            vertical-align: middle;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            color: #929292;
+   }
+   .mui-bar-tab .mui-tab-items .mui-icon {
+        top: 3px;
+        width: 24px;
+        height: 24px;
+        padding-top: 0;
+        padding-bottom: 0
+   }
+   .mui-bar-tab .mui-tab-items .mui-icon~.mui-tab-label {
+        font-size: 11px;
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+   }
 </style>

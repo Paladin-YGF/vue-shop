@@ -1,6 +1,10 @@
 import Vue from 'vue';
 import app from "./App.vue";
-import { Header , Swipe , SwipeItem, Button} from 'mint-ui';
+// import { Header , Swipe , SwipeItem, Button, Lazyload} from 'mint-ui';
+import MintUI from 'mint-ui';
+Vue.use(MintUI);
+import 'mint-ui/lib/style.css';
+
 import './lib/mui-master/dist/css/mui.min.css';
 import './lib/mui-master/dist/fonts/mui-icons-extra.ttf';
 import './lib/mui-master/dist/css/icons-extra.css';
@@ -9,26 +13,32 @@ import VueRouter from 'vue-router';
 //1.2安装路由
 Vue.use(VueRouter);
 
+// Vue.use(Lazyload);
+
 //1.3导入路由对象模块
 import router from './router.js';
 
 import VueResource from 'vue-resource';
 
+import VuePreview from 'vue-preview'
+
+// defalut install
+Vue.use(VuePreview)
 
 Vue.use(VueResource);
-
+Vue.http.options.emulateJSON = true;
 Vue.http.options.root = "http://www.liulongbin.top:3005";
 //基于moment.js处理时间格式
 import moment from "moment";
 Vue.filter('dateFormat', (data, pattern = "YYYY-MM-DD HH:mm:ss") => {
     return moment(data).format(pattern);
 })
-//注册mint-ui组件，用于首页顶部
-Vue.component(Header.name, Header);
+// //注册mint-ui组件，用于首页顶部
+// Vue.component(Header.name, Header);
 
-Vue.component(Swipe.name, Swipe);
-Vue.component(SwipeItem.name, SwipeItem);
-Vue.component(Button.name, Button);
+// Vue.component(Swipe.name, Swipe);
+// Vue.component(SwipeItem.name, SwipeItem);
+// Vue.component(Button.name, Button);
 let vm = new Vue({
     el: "#app",
     data:{

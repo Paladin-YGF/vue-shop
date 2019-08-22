@@ -1,8 +1,8 @@
 <template>
     <div ref="container">
         <h2>发表评论</h2>
-        <textarea placeholder="请输入评论内容"></textarea>
-        <mt-button type="primary" size="large">发表评论</mt-button>
+        <textarea placeholder="请输入评论内容" v-model="content"></textarea>
+        <mt-button type="primary" size="large" @click="sendMessage">发表评论</mt-button>
        <div class="list">
            <div class="list-item" v-for="(item,index) in list" :key="index">
                 <div class="list-item-title">
@@ -26,7 +26,8 @@ export default {
     data() {
         return {
             list: [],
-            pageindex: 1
+            pageindex: 1,
+            content: ''
         }
     },
     methods: {
@@ -51,6 +52,22 @@ export default {
                 }else {
                     Toast("没有新数据咯......")
                 }         
+            })
+        },
+        sendMessage() {
+            if(this.content.trim() === 0) return Toast('评论内容不为空!');
+            this.$http.post("api/postcomment/"+this.id,{content: this.content.trim()}).then(data => {   
+                if(data.body.status === 0 ){
+                    this.list.unshift({
+                        "user_name": "匿名用户",
+                        "add_time": Date.now(),
+                        "content": this.content
+                    });
+                    this.content = '';
+                    Toast("发表成功")
+                }else {
+                    Toast("发表失败")
+                }    
             })
         }
     },
