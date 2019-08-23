@@ -1,7 +1,11 @@
 <template>
     <div style="padding-top: 2.5rem; padding-bottom: 3.5rem;">
             <!-- 顶部 -->
-			<mt-header fixed title="固定在顶部"></mt-header>
+			<mt-header fixed title="购物商城">
+				<span slot="left" @click="getBack" v-show="$route.path!=='/home'">
+					<mt-button icon="back">返回</mt-button>
+				</span>
+			</mt-header>
             <!-- 路由 -->
 			<div class="container">
 			<transition>
@@ -17,10 +21,10 @@
 			</router-link>
 			<router-link class="mui-tab-items" to="/member">
 				<span class="mui-icon mui-icon-contact"></span>
-				<span class="mui-tab-label">会员</span>
+				<span class="mui-tab-label">手机</span>
 			</router-link>
 			<router-link class="mui-tab-items" to="/shopcar">
-				<span class="mui-icon mui-icon-extra mui-icon-extra-cart"><span class="mui-badge" id="box" ref="boxx">0</span></span>
+				<span class="mui-icon mui-icon-extra mui-icon-extra-cart"><span class="mui-badge" id="box" ref="boxx">{{this.$store.getters.comput}}</span></span>
 				<span class="mui-tab-label">购物车</span>
 			</router-link>
 			<router-link class="mui-tab-items" to="/search">
@@ -37,7 +41,12 @@ export default {
         return {
             msg: 123
         }
-    }
+	},
+	methods: {
+		getBack() {
+			this.$router.go(-1)
+		}
+	}
 }
 </script>
 

@@ -62,7 +62,7 @@ export default {
         return {
             id: this.$route.params.id,
             list: [],
-            listt: [],
+            listt: {},
             flag:false,
             selectCount: 1
         }
@@ -96,6 +96,13 @@ export default {
         addCar() {
             this.flag = !this.flag;
             
+            let carrList = {
+                id: this.id,
+                count: this.selectCount,
+                price: this.listt.sell_price,
+                selected: true
+            }
+            this.$store.commit('addCarList', carrList)
         },
         before(el) {
             el.style.transform = "translate(0, 0)"
