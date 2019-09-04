@@ -1,5 +1,7 @@
 const path = require('path');
+const webpack = require('webpack');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
+ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
     entry: path.join(__dirname, './src/main.js'),
     output: {
@@ -7,7 +9,11 @@ module.exports = {
        filename: 'bundle.js'
     },
     plugins:[
-        new VueLoaderPlugin()
+        new VueLoaderPlugin(),
+        new webpack.optimize.UglifyJsPlugin(),
+        new HtmlWebpackPlugin({
+            template:'src/index.html'
+        })
     ],
    module: {
        rules: [
